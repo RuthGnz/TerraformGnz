@@ -1,7 +1,7 @@
 variable "instance_tag" {}
 
 
-data "aws_instance" "${instance_tag}" {
+data "aws_instance" "created_instance" {
 
   filter {
     name   = "tag:Name"
