@@ -15,3 +15,4 @@ data "aws_instance" "created_instance" {
     values = ["${var.instance_tag}"]
   }
 }
+

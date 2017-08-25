@@ -1,6 +1,8 @@
 # Configure the AWS Provider
 variable "ACCESS_KEY" {}
 variable "SECRET_KEY" {}
+variable "instance_tag" {}
+
 provider "aws" {
   access_key = "${var.ACCESS_KEY}"
   secret_key = "${var.SECRET_KEY}"
@@ -15,7 +17,7 @@ resource "aws_instance" "server" {
     vpc_security_group_ids = ["${aws_security_group.jenkins_docker.id}"]
 
   	tags {
-    	Name = "jenkins_docker"
+    	Name = "${instance_tag}"
   	}
 }
 
@@ -46,3 +48,6 @@ resource "aws_security_group" "jenkins_docker" {
   }
 }
 
+output "ip" {
+  value = "${aws_instance.${instance_tag}.public_dns}"
+}
