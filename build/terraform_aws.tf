@@ -49,5 +49,5 @@ resource "aws_security_group" "jenkins_docker" {
 }
 
 output "ip" {
-  value = "${aws_instance.${var.instance_tag}.public_dns}"
+  value = "${aws_instance.public_dns}"
 }
