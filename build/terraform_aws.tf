@@ -17,7 +17,7 @@ resource "aws_instance" "server" {
     vpc_security_group_ids = ["${aws_security_group.jenkins_docker.id}"]
 
   	tags {
-    	Name = "${instance_tag}"
+    	Name = "${var.instance_tag}"
   	}
 }
 
@@ -49,5 +49,5 @@ resource "aws_security_group" "jenkins_docker" {
 }
 
 output "ip" {
-  value = "aws_instance.${instance_tag}.public_dns"
+  value = "aws_instance.${var.instance_tag}.public_dns"
 }
